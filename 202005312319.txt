@@ -1,0 +1,155 @@
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder2
+BUDGET: 126
+
+-----------START AUCTION-------------
+ASSET: jewel
+INITIAL PRICE: 100
+
+-------------------------------------
+
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder1
+BUDGET: 166
+INTERESTED TO AUCTION: true
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+-------------------------------------
+
+-------------------------------------
+(case 0: SEND CFP)
+AUCTIONEER: autioneer offers(CFP) the good 'jewel' at the initial price: 100
+
+AUCTIONEER: Sending message:
+(CFP
+ :receiver  (set ( agent-identifier :name bidder2@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) ( agent-identifier :name bidder1@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) )
+ :content  "100" 
+ :reply-with  cfp1590959988426  :conversation-id  asset-auction )
+-------------------------------------
+
+BIDDER PROPOSE: bidder2 offer: 102
+BIDDER PROPOSE: bidder1 offer: 107
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 102 > 0 ? 
+YES
+AUCTIONEER: NEW MAX offer: 102 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 107 > 102 ? 
+YES
+AUCTIONEER: NEW MAX offer: 107 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 107 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 110  < 126
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 112  < 166
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 110 > 107 ? 
+YES
+AUCTIONEER: NEW MAX offer: 110 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 112 > 110 ? 
+YES
+AUCTIONEER: NEW MAX offer: 112 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 112 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 120  < 126
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 114  < 166
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 120 > 112 ? 
+YES
+AUCTIONEER: NEW MAX offer: 120 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 114 > 120 ? 
+NO
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 120 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+BIDDER: bidder2 REFUSE BECAUSE 'BUDGET NOT SUFFICIENT': 129  > 126
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 122  < 166
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 122 > 120 ? 
+-------------------------------------
+
+YES
+AUCTIONEER: NEW MAX offer: 122 of bidder1
+-------------------------------------
+
+BIDDER bidder1 PAYMENT: 122
+
+(case 4)-------------------------------------
+SEND ACCEPT_PROPOSAL TO bidder1
+-------------------------------------
+
+
+
+-------------------------------------
+
+
+Auction ended
+Sale occurred
+ASSET SOLD: jewel
+TO BIDDER : bidder1
+FOR: 122 $
+-------------------------------------
+Auctioneer Agent 'autioneer terminating'
