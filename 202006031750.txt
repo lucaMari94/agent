@@ -1,0 +1,287 @@
+-------------------------------------
+(case 0: SEND CFP)
+AUCTIONEER: autioneer offers(CFP) the good 'jewel' at the initial price: 100
+
+AUCTIONEER: Sending message:
+(CFP
+ :receiver  (set ( agent-identifier :name bidder2@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) ( agent-identifier :name bidder1@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) )
+ :content  "100" 
+ :reply-with  cfp1591199413156  :conversation-id  asset-auction )
+-------------------------------------
+
+BIDDER PROPOSE: bidder2 offer: 103
+BIDDER PROPOSE: bidder1 offer: 107
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 107 > 0 ? 
+YES
+AUCTIONEER: NEW MAX offer: 107 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 103 > 107 ? 
+NO
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 107 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 109  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 110  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 109 > 107 ? 
+YES
+AUCTIONEER: NEW MAX offer: 109 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 110 > 109 ? 
+YES
+AUCTIONEER: NEW MAX offer: 110 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 110 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 111  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 119  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 111 > 110 ? 
+YES
+AUCTIONEER: NEW MAX offer: 111 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 119 > 111 ? 
+YES
+AUCTIONEER: NEW MAX offer: 119 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 119 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 123  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 126  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 123 > 119 ? 
+YES
+AUCTIONEER: NEW MAX offer: 123 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 126 > 123 ? 
+YES
+AUCTIONEER: NEW MAX offer: 126 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 126 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 132  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 134  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 132 > 126 ? 
+YES
+AUCTIONEER: NEW MAX offer: 132 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 134 > 132 ? 
+YES
+AUCTIONEER: NEW MAX offer: 134 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 134 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 142  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 140  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 142 > 134 ? 
+YES
+AUCTIONEER: NEW MAX offer: 142 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 140 > 142 ? 
+NO
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 142 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 143  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 146  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 143 > 142 ? 
+YES
+AUCTIONEER: NEW MAX offer: 143 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 146 > 143 ? 
+YES
+AUCTIONEER: NEW MAX offer: 146 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 146 of bidder1
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 154  < 196
+
+-------------------------------------
+BIDDER bidder1 NEW PROPOSE: offer: 149  < 159
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 154 > 146 ? 
+YES
+AUCTIONEER: NEW MAX offer: 154 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 149 > 154 ? 
+NO
+-------------------------------------
+
+
+-------------------------------------
+
+(case 2: SEND INFORM)
+AUCTIONEER: INFORM MAX OFFER VALUE: 154 of bidder2
+-------------------------------------
+
+
+-------------------------------------
+BIDDER bidder2 NEW PROPOSE: offer: 157  < 196
+
+-------------------------------------
+BIDDER: bidder1 REFUSE BECAUSE 'BUDGET NOT SUFFICIENT': 162  > 159
+-------------------------------------
+
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 157 > 154 ? 
+YES
+AUCTIONEER: NEW MAX offer: 157 of bidder2
+-------------------------------------
+
+
+(case 4)-------------------------------------
+SEND ACCEPT_PROPOSAL TO bidder2
+-------------------------------------
+
+BIDDER bidder2 PAYMENT: 157
+
+
+-------------------------------------
+
+
+Auction ended
+Sale occurred
+ASSET SOLD: jewel
+TO BIDDER : bidder2
+FOR: 157 $
+-------------------------------------
+Auctioneer Agent 'autioneer terminating'

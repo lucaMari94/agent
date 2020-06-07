@@ -1,0 +1,21 @@
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder1
+BUDGET: 159
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+
+-----------START AUCTION-------------
+ASSET: jewel
+INITIAL PRICE: 100
+
+-------------------------------------
+
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder2
+BUDGET: 196
+INTERESTED TO AUCTION: true
+-------------------------------------
+

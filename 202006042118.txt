@@ -1,0 +1,31 @@
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder2
+BUDGET: 187
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+
+-----------START AUCTION-------------
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder1
+BUDGET: 125
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+ASSET: jewel
+INITIAL PRICE: 100
+
+-------------------------------------
+
+-------------------------------------
+(case 0: SEND CFP)
+AUCTIONEER: autioneer offers(CFP) the good 'jewel' at the initial price: 100
+
+AUCTIONEER: Sending message:
+(CFP
+ :content  "100" 
+ :reply-with  cfp1591298333394  :conversation-id  asset-auction )
+-------------------------------------
+

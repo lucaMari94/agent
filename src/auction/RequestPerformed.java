@@ -120,8 +120,6 @@ public class RequestPerformed extends Behaviour{
 					
 					repliesCnt++;
 					
-					// System.out.println(repliesCnt + " >= " + bidderAgents.length);
-					// 2 = 2 AND 1 > 1 --> FALSE
 					if(repliesCnt >= bidderAgents.length && bidderAgents.length > 1) { // NEW PROPOSE
 						
 						step = 2;
@@ -227,12 +225,11 @@ public class RequestPerformed extends Behaviour{
 						System.out.println("TO BIDDER : " + maxOfferBidder.getLocalName());
 						System.out.println("FOR: " + maxOffer + " $");
 						
-					}
-					
-					if(reply.getPerformative() == ACLMessage.REFUSE) {
+					} else {
 						
 						printToFile("\n(case 5)\nAUCTION ENDED WITHOUT SALE");
 						System.out.println("Auction ended without sale");
+						
 						
 					}
 					// System.out.println("-------------------------------------");

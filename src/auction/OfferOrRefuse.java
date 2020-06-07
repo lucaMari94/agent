@@ -9,9 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
@@ -36,6 +39,22 @@ public class OfferOrRefuse extends CyclicBehaviour{
 			String value =  msg.getContent();
 			int offer = Integer.parseInt(value) + randomIncrement();
 			int budget = ((BidderAgent)myAgent).budget;
+			
+			AID[] bidderAgents = null;
+			DFAgentDescription template = new DFAgentDescription();
+			ServiceDescription sd = new ServiceDescription();
+			sd.setType("asset-auction");
+			template.addServices(sd);
+			try {
+				DFAgentDescription[] results = DFService.search(myAgent, template);
+				bidderAgents = new AID[results.length];
+				for(int i = 0; i < results.length; i++) {
+					bidderAgents[i] = results[i].getName();
+				}
+				
+			} catch (FIPAException fe) {
+				fe.printStackTrace();
+			}
 			
 			if(interested && budget >= offer) { 
 				

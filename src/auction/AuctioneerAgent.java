@@ -15,6 +15,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.core.behaviours.WakerBehaviour;
 
 // AuctioneerAgent wants to sell an asset 
 // (e.g. clothing, furnishing accessories, jewelry, furniture, office equipment, appliances)
@@ -43,8 +44,8 @@ public class AuctioneerAgent extends Agent{
 			printToFile("INITIAL PRICE: " + initialPrice + "\n");
 			printToFile("-------------------------------------\n");
 			
-			addBehaviour(new TickerBehaviour(this, 20000){ // classe anonima (non ha un nome)
-				protected void onTick() { // comportamento ripetuto ogni 20 secondi
+			addBehaviour(new WakerBehaviour(this, 20000){ // classe anonima (non ha un nome)
+				protected void handleElapsedTimeout() { // comportamento ripetuto ogni 20 secondi
 					
 					// search for bidders in the yellow pages
 					DFAgentDescription template = new DFAgentDescription();

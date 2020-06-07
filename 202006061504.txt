@@ -1,0 +1,61 @@
+
+-----------START AUCTION-------------
+ASSET: jewel
+INITIAL PRICE: 100
+
+-------------------------------------
+
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder1
+BUDGET: 199
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+
+-------------------------------------
+INITIALIZATION BIDDER AGENT: bidder2
+BUDGET: 107
+INTERESTED TO AUCTION: true
+-------------------------------------
+
+-------------------------------------
+(case 0: SEND CFP)
+AUCTIONEER: autioneer offers(CFP) the good 'jewel' at the initial price: 100
+
+AUCTIONEER: Sending message:
+(CFP
+ :receiver  (set ( agent-identifier :name bidder2@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) ( agent-identifier :name bidder1@10.0.2.15:1099/JADE  :addresses (sequence http://yellow:7778/acc )) )
+ :content  "100" 
+ :reply-with  cfp1591448681381  :conversation-id  asset-auction )
+-------------------------------------
+
+BIDDER REFUSE: BidderAgent 'bidder2' isn't interested to auction
+BIDDER PROPOSE: bidder1 offer: 107
+
+-------------------------------------
+
+(case 1: RECEIVE PROPOSE)
+AUCTIONEER: offer > maxOffer = 107 > 0 ? 
+YES
+AUCTIONEER: NEW MAX offer: 107 of bidder1
+-------------------------------------
+
+
+(case 4)-------------------------------------
+SEND ACCEPT_PROPOSAL TO bidder1
+-------------------------------------
+
+BIDDER bidder1 PAYMENT: 107
+
+
+-------------------------------------
+
+
+Auction ended
+Sale occurred
+ASSET SOLD: jewel
+TO BIDDER : bidder1
+FOR: 107 $
+-------------------------------------
+Auctioneer Agent 'autioneer terminating'
