@@ -45,7 +45,7 @@ public class AuctioneerAgent extends Agent{
 			printToFile("-------------------------------------\n");
 			
 			addBehaviour(new WakerBehaviour(this, 20000){ // classe anonima (non ha un nome)
-				protected void handleElapsedTimeout() { // comportamento ripetuto ogni 20 secondi
+				protected void handleElapsedTimeout() { // comportamento attivato dopo 20 secondi
 					
 					// search for bidders in the yellow pages
 					DFAgentDescription template = new DFAgentDescription();

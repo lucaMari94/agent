@@ -1,7 +1,6 @@
 package auction;
 
-import java.io.BufferedWriter;
-import java.io.File;
+import java.io.BufferedWriter; 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,11 +39,12 @@ public class OfferOrRefuse extends CyclicBehaviour{
 			int offer = Integer.parseInt(value) + randomIncrement();
 			int budget = ((BidderAgent)myAgent).budget;
 			
-			AID[] bidderAgents = null;
+			/*AID[] bidderAgents = null;
 			DFAgentDescription template = new DFAgentDescription();
 			ServiceDescription sd = new ServiceDescription();
 			sd.setType("asset-auction");
 			template.addServices(sd);
+			
 			try {
 				DFAgentDescription[] results = DFService.search(myAgent, template);
 				bidderAgents = new AID[results.length];
@@ -54,7 +54,7 @@ public class OfferOrRefuse extends CyclicBehaviour{
 				
 			} catch (FIPAException fe) {
 				fe.printStackTrace();
-			}
+			}*/
 			
 			if(interested && budget >= offer) { 
 				
@@ -72,7 +72,7 @@ public class OfferOrRefuse extends CyclicBehaviour{
 				
 				printToFile("BIDDER REFUSE: BidderAgent '" + myAgent.getLocalName() + "' isn't interested to auction");
 				
-				// bidder agent is no longer interested in the auction
+				// bidder agent is not interested in the auction
 				// removal from yellow pages
 				try {
 					DFService.deregister(myAgent); 

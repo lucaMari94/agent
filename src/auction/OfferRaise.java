@@ -62,7 +62,7 @@ public class OfferRaise extends CyclicBehaviour{
 			printToFile("-------------------------------------\n");
 			}
 		} else {
-			// System.out.println("Nessun messaggio trovato in coda"); 
+			
 			block(); // COMPORTAMENTO NON ESEGUITO DALLO SCHEDULER
 		}
 	}

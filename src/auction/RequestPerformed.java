@@ -40,26 +40,16 @@ public class RequestPerformed extends Behaviour{
 						+ ((AuctioneerAgent)myAgent).asset + "'" +  " at the initial price: " 
 						+ ((AuctioneerAgent)myAgent).initialPrice);
 				
-				// System.out.println("-------------------------------------");
-				/*System.out.println("AUCTIONEER: " 
-						+ myAgent.getLocalName() 
-						+ " offers(CFP) the good '" 
-						+ ((AuctioneerAgent)myAgent).asset + "'" +  " at the initial price: " 
-						+ ((AuctioneerAgent)myAgent).initialPrice);*/
-				// System.out.println("-------------------------------------");
-				
 				ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
 				for(int i = 0; i < ((AuctioneerAgent)myAgent).bidderAgents.length; i++) {
 					cfp.addReceiver(((AuctioneerAgent)myAgent).bidderAgents[i]);
 				}
 				
 				cfp.setContent(String.valueOf(((AuctioneerAgent)myAgent).initialPrice)); 
-				//cfp.setContent(((AuctioneerAgent)myAgent).asset);
 				
 				cfp.setConversationId("asset-auction");
 				cfp.setReplyWith("cfp" + System.currentTimeMillis());
 				
-				// System.out.println("AUCTIONEER: Sending message... " + cfp + "\n");
 				printToFile("\nAUCTIONEER: Sending message:\n" + cfp);
 				printToFile("-------------------------------------\n");
 				myAgent.send(cfp); // sending CFP to all bidder Agents
@@ -101,22 +91,8 @@ public class RequestPerformed extends Behaviour{
 						
 					}
 					
-					// get bidders
-					AID[] bidderAgents = null;
-					DFAgentDescription template = new DFAgentDescription();
-					ServiceDescription sd = new ServiceDescription();
-					sd.setType("asset-auction");
-					template.addServices(sd);
-					try {
-						DFAgentDescription[] results = DFService.search(myAgent, template);
-						bidderAgents = new AID[results.length];
-						for(int i = 0; i < results.length; i++) {
-							bidderAgents[i] = results[i].getName();
-						}
-						
-					} catch (FIPAException fe) {
-						fe.printStackTrace();
-					}
+					// get bidders from yellow pages
+					AID[] bidderAgents = getBidders();
 					
 					repliesCnt++;
 					
@@ -124,8 +100,12 @@ public class RequestPerformed extends Behaviour{
 						
 						step = 2;
 						
-					} else if(bidderAgents.length == 1 && proposeNumber >= 1){ // ACCEPT PROPOSAL è rimasta una proposta e c'è stata almeno una proposta
-						
+					} else if(bidderAgents.length == 1 && proposeNumber >= 1 && repliesCnt > bidderAgents.length){ // ACCEPT PROPOSAL è rimasta una proposta e c'è stata almeno una proposta
+						printToFile("proposeNumber = " + proposeNumber);
+						printToFile("bidderAgents.length = " + bidderAgents.length);
+						printToFile("repliesCnt = " + repliesCnt);
+						printToFile("maxOfferBidder = " + maxOfferBidder);
+						printToFile("maxOffer = " + maxOffer);
 						step = 3;
 					
 					} else if(bidderAgents.length == 0){ // REFUSE FROM ALL BIDDERS
@@ -146,22 +126,8 @@ public class RequestPerformed extends Behaviour{
 				printToFile("\n(case 2: SEND INFORM)\nAUCTIONEER: INFORM MAX OFFER VALUE: " + maxOffer + " of " + maxOfferBidder.getLocalName());
 				printToFile("-------------------------------------\n");
 				
-				// get bidders
-				AID[] bidderAgents = null;
-				DFAgentDescription template = new DFAgentDescription();
-				ServiceDescription sd = new ServiceDescription();
-				sd.setType("asset-auction");
-				template.addServices(sd);
-				try {
-					DFAgentDescription[] results = DFService.search(myAgent, template);
-					bidderAgents = new AID[results.length];
-					for(int i = 0; i < results.length; i++) {
-						bidderAgents[i] = results[i].getName();
-					}
-					
-				} catch (FIPAException fe) {
-					fe.printStackTrace();
-				}
+				// get bidders from yellow pages
+				AID[] bidderAgents = getBidders();
 				
 				ACLMessage cfp2 = new ACLMessage(ACLMessage.INFORM);
 				for(int i = 0; i < bidderAgents.length; i++) {
@@ -187,7 +153,7 @@ public class RequestPerformed extends Behaviour{
 
 			case 3:
 				
-				printToFile("\n(case 4)-------------------------------------");
+				printToFile("\n(case 3)-------------------------------------");
 				printToFile("SEND ACCEPT_PROPOSAL TO " + maxOfferBidder.getLocalName());
 				printToFile("-------------------------------------\n");
 				
@@ -248,6 +214,26 @@ public class RequestPerformed extends Behaviour{
 	
 	public boolean done() {
 		return (step == 5);
+	}
+	
+	protected AID[] getBidders() {
+		AID[] bidderAgents = null;
+		DFAgentDescription template = new DFAgentDescription();
+		ServiceDescription sd = new ServiceDescription();
+		sd.setType("asset-auction");
+		template.addServices(sd);
+		try {
+			DFAgentDescription[] results = DFService.search(myAgent, template);
+			bidderAgents = new AID[results.length];
+			for(int i = 0; i < results.length; i++) {
+				bidderAgents[i] = results[i].getName();
+			}
+			
+		} catch (FIPAException fe) {
+			fe.printStackTrace();
+		}
+		
+		return bidderAgents;
 	}
 	
 	public void printToFile(String value) {
